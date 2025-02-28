@@ -236,7 +236,38 @@
                 font-size: 2.5rem;
             }
         }
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .services {
+            padding: 8rem 5% 5rem; /* Adjusted padding */
+        }
+        
+        /* Add padding to other sections if needed */
+        footer {
+            padding: 8rem 5% 3rem;
+        }
     </style>
+    <script>
+      // Chatbot functionality (keep existing code)
+      
+      // Add smooth scrolling functionality
+      document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', function(e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href');
+              const targetSection = document.querySelector(targetId);
+              const navbarHeight = document.querySelector('.navbar').offsetHeight;
+              const targetPosition = targetSection.offsetTop - navbarHeight;
+
+              window.scrollTo({
+                  top: targetPosition,
+                  behavior: 'smooth'
+              });
+          });
+      });
+  </script>
 </head>
 <body>
     <!-- Navbar -->
