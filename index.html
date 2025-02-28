@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>At First Education Network - Your Study Abroad Partner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #2c3e50;
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #27ae60;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #27ae60;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 5%;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #219a52;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 5%;
+            background: #f9f9f9;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: #27ae60;
+            margin-bottom: 1rem;
+        }
+
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle {
+            background: #27ae60;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .chatbot-box {
+            display: none;
+            width: 350px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+        }
+
+        .chatbot-header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .chatbot-messages {
+            height: 300px;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 0.5rem;
+        }
+
+        .chatbot-input button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <span>AFEN</span> Education
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to At First Education Network</h1>
+            <p>Your Gateway to Global Education Opportunities</p>
+            <button class="cta-button">Book Free Consultation</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>University Admissions</h3>
+                <p>Guidance for undergraduate and postgraduate admissions worldwide</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-passport"></i>
+                <h3>Visa Assistance</h3>
+                <p>Professional visa application guidance and documentation support</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-book-open"></i>
+                <h3>Test Preparation</h3>
+                <p>IELTS, TOEFL, GRE, GMAT, and other test preparation support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@afen.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+                <p>Address: 123 Education Street, Knowledge City</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" onclick="toggleChatbot()">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-box" id="chatbot">
+            <div class="chatbot-header">
+                <h3>AFEN Assistant</h3>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages"></div>
+            <div class="chatbot-input">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chatbot functionality
+        let chatOpen = false;
+        const chatbot = document.getElementById('chatbot');
+        const chatMessages = document.getElementById('chatbot-messages');
+
+        function toggleChatbot() {
+            chatOpen = !chatOpen;
+            chatbot.style.display = chatOpen ? 'block' : 'none';
+        }
+
+        function addMessage(message, isBot = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isBot ? 'bot' : 'user'}`;
+            messageDiv.textContent = message;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value.trim();
+            
+            if (message) {
+                addMessage(message);
+                // Bot response
+                setTimeout(() => {
+                    if (message.toLowerCase().includes('hello') || message.toLowerCase().includes('hi')) {
+                        addMessage('Hello! How can I help you today?', true);
+                    } else if (message.toLowerCase().includes('service')) {
+                        addMessage('We offer university admissions, visa assistance, test preparation, and scholarship guidance.', true);
+                    } else if (message.toLowerCase().includes('contact')) {
+                        addMessage('You can reach us at info@afen.com or +1 (555) 123-4567', true);
+                    } else if (message.toLowerCase().includes('hour')) {
+                        addMessage('Our office hours are Mon-Fri 9AM to 6PM', true);
+                    } else {
+                        addMessage('Please contact us directly for more specific inquiries.', true);
+                    }
+                }, 1000);
+                
+                userInput.value = '';
+            }
+        }
+
+        // Handle Enter key
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Initialize with bot message
+        window.onload = function() {
+            addMessage('Welcome to AFEN! How can I assist you today?', true);
+        }
+    </script>
+</body>
+</html>
